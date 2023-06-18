@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.cargo/bin
-export PATH=$PATH:~/Library/Python/2.7/bin
+export PATH=$PATH:~/Library/Python/2.7/bin:$HOME/.config/tmux/bin
 NPM_PACKAGES="${HOME}/.npm-packages"
 
 export PATH="$NPM_PACKAGES/bin:$PATH"
