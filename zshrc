@@ -1,9 +1,21 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.cargo/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME
 export PATH=$PATH:~/Library/Python/2.7/bin:$HOME/.config/tmux/bin
+export PATH=$PATH:/Users/alondahari/fvm/versions/3.10.5/bin
 NPM_PACKAGES="${HOME}/.npm-packages"
 
 export PATH="$NPM_PACKAGES/bin:$PATH"
+
+export GEM_HOME=$HOME/.gem
+export PATH=$GEM_HOME/bin:$PATH
+eval "$(rbenv init - zsh)"
 
 # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
 unset MANPATH # delete if you already modified MANPATH elsewhere in your config
@@ -15,10 +27,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 
+# Use Arc as the browser for flutter web
+export CHROME_EXECUTABLE=/Applications/Arc.app/Contents/MacOS/Arc
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="geoffgarside"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -93,8 +108,8 @@ fi
 #
 # Example aliases
 # alias pass1="eval $(op signin uptech)"
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias cd..="cd .."
 alias zshrefresh="source ~/.zshrc"
 alias uuid="uuidgen"
@@ -108,3 +123,12 @@ alias gpp="gps pull"
 
 # eval "$(starship init zsh)"
 # eval "$(rbenv init -)"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+## [Completion] 
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/alondahari/.dart-cli-completion/zsh-config.zsh ]] && . /Users/alondahari/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
