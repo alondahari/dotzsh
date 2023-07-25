@@ -6,9 +6,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME
+export PATH=$HOME/bin:/usr/local/bin:/usr/bin:$PATH:$HOME
 export PATH=$PATH:~/Library/Python/2.7/bin:$HOME/.config/tmux/bin
+export PATH=$PATH:~/.cargo/bin/
 export PATH=$PATH:/Users/alondahari/fvm/versions/3.10.5/bin
+export PATH=$PATH:$(go env GOPATH)/bin
 NPM_PACKAGES="${HOME}/.npm-packages"
 
 export PATH="$NPM_PACKAGES/bin:$PATH"
@@ -28,7 +30,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 
 # Use Arc as the browser for flutter web
-export CHROME_EXECUTABLE=/Applications/Arc.app/Contents/MacOS/Arc
+export CHROME_EXECUTABLE=/Applications/Chromium.app/Contents/MacOS/Chromium
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -92,7 +94,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='nvim'
 fi
 
 # Compilation flags
@@ -120,6 +122,16 @@ alias gprr="gps rr"
 alias gpi="gps int"
 alias gpr="gps rebase"
 alias gpp="gps pull"
+alias ta="tmux attach"
+alias tk="tmux kill-session"
+
+alias co="git co"
+alias su="git submodule update"
+alias fdev="aws eks --profile faninc-dev --region us-west-2 update-kubeconfig --name faninc-dev"
+alias fstage="aws eks --profile faninc-stage --region us-west-2 update-kubeconfig --name faninc-stage"
+alias fprod="aws eks --profile faninc-prod --region us-west-2 update-kubeconfig --name faninc-prod"
+
+alias ta="tmux attach"
 
 # eval "$(starship init zsh)"
 # eval "$(rbenv init -)"
